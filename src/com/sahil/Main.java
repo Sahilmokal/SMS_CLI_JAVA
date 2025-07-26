@@ -44,8 +44,9 @@ public class Main {
         System.out.println("4: Delete a record");
         System.out.println("5: Exit");
 
-        int choice = sc.nextInt();
+
         while(true){
+            int choice = sc.nextInt();
             switch(choice){
                 case 1:
                     addStudent();
@@ -71,10 +72,53 @@ public class Main {
     }
 
     private static void deleteStudent() {
+        System.out.println("Enter roll number of the student to delete:");
+        int rollToDelete = sc.nextInt();
+        boolean found = false;
+
+        for (int i = 0; i < List1.size(); i++) {
+            if (List1.get(i).rollnumber == rollToDelete) {
+                List1.remove(i);
+                System.out.println("Student record deleted successfully.");
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Student with roll number " + rollToDelete + " not found.");
+        }
     }
 
+
     private static void updateStudent() {
+        System.out.println("Enter roll number of the student to update:");
+        int rollToUpdate = sc.nextInt();
+        boolean found = false;
+
+        for (Student student : List1) {
+            if (student.rollnumber == rollToUpdate) {
+                found = true;
+                System.out.println("Enter new name:");
+                student.name = sc.next();
+                System.out.println("Enter new age:");
+                student.age = sc.nextInt();
+                System.out.println("Enter new course:");
+                student.course = sc.next();
+                System.out.println("Enter new email:");
+                student.email = sc.next();
+                System.out.println("Enter new phone number:");
+                student.phonenumber = sc.next();
+                System.out.println("Student record updated successfully.");
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Student with roll number " + rollToUpdate + " not found.");
+        }
     }
+
 
     private static void viewStudent() {
         System.out.println("Directory of Students");
@@ -94,7 +138,7 @@ public class Main {
 
             }
         }
-        System.exit(0);
+        
     }
 
     private static void addStudent() {
