@@ -42,7 +42,8 @@ public class Main {
         System.out.println("2: View all records");
         System.out.println("3: Update a record");
         System.out.println("4: Delete a record");
-        System.out.println("5: Exit");
+        System.out.println("5. Total number of students");
+        System.out.println("6: Exit");
 
 
         while(true){
@@ -61,8 +62,12 @@ public class Main {
                     deleteStudent();
                     break;
                 case 5:
+                    countStudents();
+                    break;
+                case 6:
                     System.out.println("Exiting... Goodbye!");
                     System.exit(0);
+
                 default:
                     System.out.println("Invalid choice. Try again.");
             }
@@ -158,4 +163,8 @@ public class Main {
         System.out.println("Student added succesfully");
         viewStudent();
     }
+    public static void countStudents() {
+        System.out.println("Total number of students: " + List1.size());
+    }
+
 }
