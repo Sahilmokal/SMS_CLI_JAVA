@@ -34,7 +34,7 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        List1.add(new Student("sidd", 21,22,"java", "java@jav.com", "996756"));
+        List1.add(new Student("sidd mokal", 21,22,"java", "java@jav.com", "996756"));
         System.out.println("Welcome to Student management System");
         System.out.println("------------------------------------");
         System.out.println("Please select a below operation");
@@ -104,8 +104,9 @@ public class Main {
         for (Student student : List1) {
             if (student.rollnumber == rollToUpdate) {
                 found = true;
+                sc.nextLine();
                 System.out.println("Enter new name:");
-                student.name = sc.next();
+                student.name = sc.nextLine();
                 System.out.println("Enter new age:");
                 student.age = sc.nextInt();
                 System.out.println("Enter new course:");
@@ -147,22 +148,32 @@ public class Main {
     }
 
     private static void addStudent() {
+        sc.nextLine();
         System.out.println("Enter name");
-        String names = sc.next();
+        String names = sc.nextLine();  // ✅ Only one nextLine()
+
         System.out.println("Enter rollnumber");
         int rolls = sc.nextInt();
+        // ✅ Clear buffer before reading nextLine or next with strings
+
         System.out.println("Enter age");
         int ages = sc.nextInt();
+
+
         System.out.println("Enter course");
         String courses = sc.next();
+
         System.out.println("Enter email");
         String emails = sc.next();
+
         System.out.println("Enter phone number");
-        String phones = sc.next();
-        List1.add(new Student(names ,rolls, ages, courses, emails, phones));
-        System.out.println("Student added succesfully");
+        String phones = sc.nextLine();
+
+        List1.add(new Student(names, rolls, ages, courses, emails, phones));
+        System.out.println("Student added successfully");
         viewStudent();
     }
+
     public static void countStudents() {
         System.out.println("Total number of students: " + List1.size());
     }
