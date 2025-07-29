@@ -43,7 +43,8 @@ public class Main {
         System.out.println("3: Update a record");
         System.out.println("4: Delete a record");
         System.out.println("5. Total number of students");
-        System.out.println("6: Exit");
+        System.out.println("6. Search a student");
+        System.out.println("7: Exit");
 
 
         while(true){
@@ -65,6 +66,9 @@ public class Main {
                     countStudents();
                     break;
                 case 6:
+                    searchStudent();
+                    break;
+                case 7:
                     System.out.println("Exiting... Goodbye!");
                     System.exit(0);
 
@@ -92,6 +96,29 @@ public class Main {
 
         if (!found) {
             System.out.println("Student with roll number " + rollToDelete + " not found.");
+        }
+    }
+    private static void searchStudent() {
+        System.out.println("Enter roll number or name to search:");
+        sc.nextLine();
+        String input = sc.nextLine();
+        boolean found = false;
+
+        for (Student student : List1) {
+            if (String.valueOf(student.rollnumber).equals(input) || student.name.equalsIgnoreCase(input)) {
+                System.out.println("Student Found:");
+                System.out.println("Name: " + student.name +
+                        ", Roll: " + student.rollnumber +
+                        ", Age: " + student.age +
+                        ", Course: " + student.course +
+                        ", Email: " + student.email +
+                        ", Phone: " + student.phonenumber);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No student found with input: " + input);
         }
     }
 
